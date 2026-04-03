@@ -1,116 +1,76 @@
-# Description
-This is a C++ implementation of the TOPP-RA algorithm.
+# `toppra`: Time-Optimal Path Parameterization
+![Integrate](https://github.com/hungpham2511/toppra/actions/workflows/integrate.yml/badge.svg)
 
-# Building
 
-```sh
-# clone
-git clone -b develop https://github.com/hungpham2511/toppra
+- [Overview](#overview)
+- [Support](#support)
+- [Citing `toppra`](#citing--toppra-)
 
-# build
-mkdir -p cpp/build && cd cpp/build
-cmake ..
-make -j4
 
-# run test
-./tests/all_tests
+# Overview
+
+> [!NOTE]
+> **Python support for the library will be dropped. Consider using the C++ version with bindings instead.**
+
+**toppra** is a library for computing the time-optimal path
+parametrization for robots subject to kinematic and dynamic
+constraints.  In general, given the inputs:
+
+1. a geometric path `p(s)`, `s` in `[0, s_end]`;
+2. a list of constraints on joint velocity, joint accelerations, tool
+   Cartesian velocity, et cetera.
+
+**toppra** returns the time-optimal path parameterization: `s_dot
+(s)`, from which the fastest trajectory `q(t)` that satisfies the
+given constraints can be found.
+
+**Documentation and tutorials** are available
+[here](https://hungpham2511.github.io/toppra/index.html).
+
+You can install the package with pip:
+
+``` shell
+pip install toppra
 ```
 
-## Running test with pinocchio
-`pinocchio` is used in toppra to calculate kinematical quantities such
-as end-effector pose jacobians, required for task-space velocity
-consraint. 
+To install from source for development:
 
-Install `pinocchio` bindings (see below) and example from robotpkg,
-then setup environment variables before building
-
-``` sh
-# Building
-export LD_LIBRARY_PATH=/opt/openrobots/lib:${LD_LIBRARY_PATH}
-export CMAKE_PREFIX_PATH=/opt/openrobots
+``` shell
+pip install -e python
 ```
 
-Add `-DBUILD_WITH_PINOCCHIO=ON` to the cmake command.
+# Support
 
-To run the tests
+## Bug tracking
+Please report any issues, questions or feature request via 
+[Github issues tracker](https://github.com/hungpham2511/toppra/issues).
 
-``` sh
-# Running
-export ROS_PACKAGE_PATH=/opt/openrobots/share
-export PYTHONPATH=/opt/openrobots/lib/python3.6/site-packages:$PYTHONPATH
-# or any python version that you install
-```
+Have a quick question? Try asking in our slack channel.
 
-## How to install optional dependencies:
+## Contributions
+Pull Requests are welcome! Create a Pull Request and we will review
+your proposal!
 
-- GLPK: `sudo apt install libglpk-dev`
-- qpOASES: `sudo apt install robotpkg-qpoases` (follow http://robotpkg.openrobots.org/debian.html for robotpkg)
-- pinocchio: `sudo apt install robotpkg-pinocchio` (follow http://robotpkg.openrobots.org/debian.html for robotpkg)
+# Credits
 
+`toppra` was originally developed by [Hung
+Pham](https://hungpham2511.github.com/) ([Eureka Robotics](https://eurekarobotics.com/), former [CRI
+Group](https://personal.ntu.edu.sg/cuong/)) and [Phạm Quang Cường](https://personal.ntu.edu.sg/cuong/)
+(Eureka Robotics, CRI Group) with major contributions from talented
+contributors:
+- [Joseph Mirabel](https://github.com/jmirabel) (C++ API)
+- EdsterG (Python3 support).
+- [Sebastian Castro](https://github.com/sea-bass) (ROS support and maintenance)
 
-## Building Python bindings
+If you have taken part in developing and supporting the library, feel
+free to add your name to the list.
 
-We use `pybind11` to provide the bindings. To build the bindings you
-need to first install pybind11 version 2.5.0.
-``` sh
-cd ~/ && git clone https://github.com/pybind/pybind11
-cd pybind11 && git checkout v2.5.0
-mkdir build && cd build && cmake -DPYBIND11_TEST=false .. && sudo make install
-```
+The development is also generously supported by [Eureka Robotics](https://eurekarobotics.com/).
 
-Build `toppra` with Python bindings and all optional dependencies:
-``` sh
-cmake -DBUILD_WITH_PINOCCHIO=ON -DBUILD_WITH_qpOASES=ON -DBUILD_WITH_GLPK=ON -DPYTHON_BINDINGS=ON -DPYBIND11_PYTHON_VERSION=3.7 ..
-make
-```
-Running this step shall build the shared library `libtoppra.so` and create a CPython
-module at `toppra/cpp/` that linked to this shared library.
+# Citing toppra
+If you use this library for your research, we encourage you to 
 
-## Issues during build
-
-``` sh
-/usr/local/include/pybind11/detail/common.h:112:10: fatal error: Python.h: No such file or directory
- #include <Python.h>
-          ^~~~~~~~~~
-compilation terminated.
-```
-This is because during compilation, `pybind11` can not find the Python header files. 
-Check that you have `libpython-dev` or `libpython3-dev` installed and whether the 
-correct Python executable  is found during cmake step. You should see something similar to
-below:
-
-``` sh
--- Found PythonInterp: /usr/bin/python3.7 (found suitable version "3.7.4", minimum required is "3.7")
--- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.7m.so
--- Found /usr/include/python3.7m /usr/bin/python3.7
-```
-
-If this error persists, try give more hint to CMake `FindPython`
-module by adding these flags to the cmake command:
-``` sh
--DPYTHON_BINDINGS=ON -DPYBIND11_PYTHON_VERSION=3.7 -DPython_EXECUTABLE=/usr/bin/python3.7 
-```
-
-## Building doxygen doc
-
-Make sure that `doxygen` is installed and available. Running cmake
-normally will create a rule for building doc with doxygen.
-
-``` sh
-# Run cmake normally
-make doc
-# The documentation is available at doc/doc/html/index.html
-```
-
-# Using TOPPRA in CMake-based project
-
-In your CMakeLists.txt,
-```cmake
-# The following line defines cmake target toppra::toppra
-find_package(toppra)
-...
-target_link_library(foo PUBLIC toppra::toppra)
-```
-
-
+1. reference the accompanying paper [A new approach to Time-Optimal Path Parameterization based on Reachability Analysis](https://www.researchgate.net/publication/318671280_A_New_Approach_to_Time-Optimal_Path_Parameterization_Based_on_Reachability_Analysis),
+   *IEEE Transactions on Robotics*, vol. 34(3), pp. 645-659, 2018.
+2. put a star on this repository.
 
