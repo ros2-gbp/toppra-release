@@ -1,0 +1,12 @@
+Source: ros-humble-toppra
+Section: misc
+Priority: optional
+Maintainer: Hung Pham <hungpham2511@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, pybind11-dev, python3-dev, ros-humble-ament-cmake, ros-humble-ament-cmake-gtest <!nocheck>, ros-humble-ament-cmake-python, ros-humble-ros-workspace
+Homepage: https://hungpham2511.github.io/toppra/index.html
+Standards-Version: 3.9.2
+
+Package: ros-humble-toppra
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, ros-humble-ros-workspace
+Description: Time-Optimal Path Parameterization
