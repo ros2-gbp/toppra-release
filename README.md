@@ -1,3 +1,26 @@
+## toppra (jazzy) - 0.6.7-1
+
+The packages in the `toppra` repository were released into the `jazzy` distro by running `/usr/bin/bloom-release --rosdistro jazzy toppra` on `Tue, 14 Apr 2026 23:21:44 -0000`
+
+The `toppra` package was released.
+
+Version of package(s) in repository `toppra`:
+
+- upstream repository: https://github.com/hungpham2511/toppra.git
+- release repository: https://github.com/ros2-gbp/toppra-release.git
+- rosdistro version: `0.6.6-1`
+- old version: `null`
+- new version: `0.6.7-1`
+
+Versions of tools used:
+
+- bloom version: `0.13.0`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## toppra (humble) - 0.6.7-1
 
 The packages in the `toppra` repository were released into the `humble` distro by running `/usr/bin/bloom-release --rosdistro humble toppra` on `Tue, 14 Apr 2026 23:20:07 -0000`
