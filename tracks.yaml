@@ -104,4 +104,5 @@ tracks:
     ros_distro: rolling
     vcs_type: git
     vcs_uri: https://github.com/hungpham2511/toppra.git
-    version: :{auto}
+    version: 0.6.7
+    version_saved: :{auto}
