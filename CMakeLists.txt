@@ -1,13 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
 project(toppra
-  VERSION 0.6.7
+  VERSION 0.6.8
   DESCRIPTION "Library computing the time-optimal path parameterization."
   LANGUAGES CXX)
-set(CMAKE_CXX_STANDARD 14)
-set(CMAKE_CXX_STANDARD_REQUIRED True)
 # Tests
-option(BUILD_TESTS "Build Gtests" ON)
+option(BUILD_TESTING "Build Gtests" ON)
 # Dynamics
 option(BUILD_WITH_PINOCCHIO "Compile with Pinocchio library" OFF)
 # Solvers
@@ -53,7 +51,12 @@ add_subdirectory(src)
 add_subdirectory(doc)
 add_subdirectory(bindings)
 
-if(BUILD_TESTS)
+# Backward compatibility: support legacy BUILD_TESTS for downstream scripts.
+if(DEFINED BUILD_TESTS)
+  set(BUILD_TESTING "${BUILD_TESTS}" CACHE BOOL "Build Gtests" FORCE)
+  message(DEPRECATION "BUILD_TESTS is deprecated; use BUILD_TESTING.")
+endif()
+if(BUILD_TESTING)
   enable_testing()
   add_subdirectory(tests)
 endif()
