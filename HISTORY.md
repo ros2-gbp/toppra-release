@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.8 (April 23 2026)
+
+- [cpp] fix: pinocchio v4 compatibility
+- [cpp] Fix gtest target_link_libraries usage when fetching from source (#286)
+- [cpp] Fix missing cassert includes in headers
+
 ## 0.6.7 (April 9 2026)
 
 - [cpp] Modernize googletest CMake usage (#283)
