@@ -1,3 +1,26 @@
+## toppra (lyrical) - 0.6.10-1
+
+The packages in the `toppra` repository were released into the `lyrical` distro by running `/usr/bin/bloom-release --rosdistro lyrical toppra` on `Fri, 28 Aug 2026 12:12:12 -0000`
+
+The `toppra` package was released.
+
+Version of package(s) in repository `toppra`:
+
+- upstream repository: https://github.com/hungpham2511/toppra.git
+- release repository: https://github.com/ros2-gbp/toppra-release.git
+- rosdistro version: `0.6.9-1`
+- old version: `0.6.9-1`
+- new version: `0.6.10-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.3`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## toppra (kilted) - 0.6.10-1
 
 The packages in the `toppra` repository were released into the `kilted` distro by running `/usr/bin/bloom-release --rosdistro kilted toppra` on `Fri, 28 Aug 2026 12:11:13 -0000`
