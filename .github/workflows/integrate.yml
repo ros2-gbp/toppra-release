@@ -1,7 +1,13 @@
 # Test and publish toppra (Python)
 name: Python package
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - develop
+    tags:
+      - '*'
+  pull_request:
 
 jobs:
 
