@@ -1,3 +1,26 @@
+## toppra (humble) - 0.6.11-1
+
+The packages in the `toppra` repository were released into the `humble` distro by running `/usr/bin/bloom-release --rosdistro humble toppra` on `Thu, 05 Nov 2026 12:56:45 -0000`
+
+The `toppra` package was released.
+
+Version of package(s) in repository `toppra`:
+
+- upstream repository: https://github.com/hungpham2511/toppra.git
+- release repository: https://github.com/ros2-gbp/toppra-release.git
+- rosdistro version: `0.6.10-1`
+- old version: `0.6.10-1`
+- new version: `0.6.11-1`
+
+Versions of tools used:
+
+- bloom version: `0.14.4`
+- catkin_pkg version: `1.1.1`
+- rosdep version: `0.27.0`
+- rosdistro version: `1.1.0`
+- vcstools version: `0.1.42`
+
+
 ## toppra (rolling) - 0.6.10-1
 
 The packages in the `toppra` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --rosdistro rolling toppra` on `Fri, 28 Aug 2026 12:13:06 -0000`
